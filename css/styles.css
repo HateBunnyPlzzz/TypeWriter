@@ -1,0 +1,73 @@
+
+:root{
+  --bg-color : #CC9966;
+  --typewriterSpeed: 6s;
+}
+body{
+  background-color: var(--bg-color);
+  font-family: Roboto Mono;
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+  display: grid;
+  place-content: center;
+}
+
+h1{
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  width: max-content;
+  font-weight: lighter;
+}
+
+h1::before,
+h1::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+h1::before{
+  background: var(--bg-color);
+  animation: 
+      typewriter var(--typewriterSpeed) steps(24) 1s forwards;
+}
+h1::after{
+  width: 0.125em;
+  background: black;
+  animation: 
+      typewriter var(--typewriterSpeed) steps(24) 1s forwards,
+      blink 700ms steps(24) infinite;
+}
+
+.subtext{
+  color: aliceblue;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease 
+  calc(var(--typewriterSpeed) + 1s) forwards;
+}
+
+
+
+@keyframes typewriter {
+  to { left : 100%;
+  }
+}
+
+@keyframes blink{
+  to{
+    background: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to{
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+}
